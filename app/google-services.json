@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "537573392456",
+    "firebase_url": "https://basil-9f751.firebaseio.com",
+    "project_id": "basil-9f751",
+    "storage_bucket": "basil-9f751.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537573392456:android:7f5b9dea6382a692",
+        "android_client_info": {
+          "package_name": "com.example.basilandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537573392456-pulanosbh3r9vkh1i93bk1emcoec2ee1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrAa-8RkcB8Vch1t3eX8UzKq_HYDuPZiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537573392456-pulanosbh3r9vkh1i93bk1emcoec2ee1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
