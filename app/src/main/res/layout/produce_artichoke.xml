@@ -147,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
                 android:padding="5dp"
+                android:layout_marginStart="10dp"
                 android:text="How to cut "
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
@@ -158,6 +159,7 @@
                 android:layout_gravity="end"
                 android:background="@drawable/square"
                 android:padding="5dp"
+                android:layout_marginStart="10dp"
                 android:text="Store basil leaves"
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
@@ -169,6 +171,7 @@
                 android:layout_gravity="end"
                 android:background="@drawable/square"
                 android:padding="5dp"
+                android:layout_marginStart="10dp"
                 android:text="More..."
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
@@ -202,30 +205,34 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/round"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/type_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:padding="5dp"
+                android:padding="10dp"
+                android:background="@drawable/round_text_bg"
+                android:layout_centerInParent="true"
                 android:text="Type your question"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
             <ImageView
-                android:background="@drawable/voice_icon"
+                android:layout_toEndOf="@+id/type_text"
                 android:layout_width="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="end"
                 android:layout_height="50dp"
-                />
-        </LinearLayout>
+                android:padding="5dp"
+                android:background="@drawable/round_voice_icon"
+                android:src="@drawable/voice_icon" />
+        </RelativeLayout>
 
     </LinearLayout>
 

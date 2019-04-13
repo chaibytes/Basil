@@ -13,6 +13,10 @@
 // limitations under the License.
 package com.example.basilandroid;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -24,13 +28,18 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.example.basilandroid.animation.StringAnimationFramework;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.firebase.ml.common.FirebaseMLException;
 
@@ -63,10 +72,21 @@ public final class LivePreviewActivity extends AppCompatActivity
   private GraphicOverlay graphicOverlay;
   private String selectedModel = IMAGE_LABEL_DETECTION;
 
+  private boolean isAnimationBeingDisplayed;
+
+  private StringAnimationFramework mAnimationFramework;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
+
+    //Remove title bar
+    this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+    //Remove notification bar
+    this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     setContentView(R.layout.activity_live_preview);
 
@@ -86,6 +106,9 @@ public final class LivePreviewActivity extends AppCompatActivity
     } else {
       getRuntimePermissions();
     }
+
+    displaySplashAnimation();
+
   }
 
 
@@ -120,6 +143,8 @@ public final class LivePreviewActivity extends AppCompatActivity
         cameraSource = null;
       }
     }
+
+
   }
 
   @Override
@@ -127,6 +152,10 @@ public final class LivePreviewActivity extends AppCompatActivity
     super.onResume();
     Log.d(TAG, "onResume");
     startCameraSource();
+
+    if (mAnimationFramework != null && isAnimationBeingDisplayed) {
+      startStringAnimation();
+    }
   }
 
   /** Stops the camera. */
@@ -134,6 +163,10 @@ public final class LivePreviewActivity extends AppCompatActivity
   protected void onPause() {
     super.onPause();
     preview.stop();
+
+    if (mAnimationFramework != null) {
+      stopStringAnimation();
+    }
   }
 
   @Override
@@ -201,5 +234,61 @@ public final class LivePreviewActivity extends AppCompatActivity
     }
     Log.i(TAG, "Permission NOT granted: " + permission);
     return false;
+  }
+
+
+  private void displaySplashAnimation() {
+    // Custom animation on image
+    final ImageView myView = findViewById(R.id.basil_leaf_image);
+
+    myView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        hideUserGuidance();
+        View produce_artichoke = findViewById(R.id.produce_artichoke);
+        produce_artichoke.setVisibility(View.VISIBLE);
+
+      }
+    });
+
+    ObjectAnimator scaleX = ObjectAnimator.ofFloat(myView, "scaleX",  0f, 1f);
+    ObjectAnimator scaleY = ObjectAnimator.ofFloat(myView, "scaleY",  0f, 1f);
+    ObjectAnimator fadeIn = ObjectAnimator.ofFloat(myView, "alpha", 0f, 1f);
+
+    final AnimatorSet mAnimationSet = new AnimatorSet();
+
+    mAnimationSet.playTogether(scaleX, scaleY, fadeIn);
+    mAnimationSet.setDuration(2000);
+
+    mAnimationSet.addListener(new AnimatorListenerAdapter() {
+      @Override
+      public void onAnimationEnd(Animator animation) {
+        super.onAnimationEnd(animation);
+        showUserGuidance();
+      }
+    });
+    mAnimationSet.start();
+  }
+
+  private void showUserGuidance() {
+    TextView view = findViewById(R.id.user_guidance_text);
+    mAnimationFramework = new StringAnimationFramework(view);
+    startStringAnimation();
+    isAnimationBeingDisplayed = true;
+  }
+
+  private void hideUserGuidance() {
+    if (mAnimationFramework != null) {
+      stopStringAnimation();
+    }
+    isAnimationBeingDisplayed = false;
+  }
+
+  private void startStringAnimation() {
+    mAnimationFramework.resumeAnimators();
+  }
+
+  private void stopStringAnimation() {
+    mAnimationFramework.pauseAnimators();
   }
 }

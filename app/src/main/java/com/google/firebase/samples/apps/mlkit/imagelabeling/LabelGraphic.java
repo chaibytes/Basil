@@ -37,7 +37,7 @@ public class LabelGraphic extends Graphic {
     this.labels = labels;
     textPaint = new Paint();
     textPaint.setColor(Color.WHITE);
-    textPaint.setTextSize(25.0f);
+    textPaint.setTextSize(35.0f);
   }
 
   @Override
@@ -49,7 +49,7 @@ public class LabelGraphic extends Graphic {
 
     for (FirebaseVisionImageLabel label : labels) {
       canvas.drawText(label.getText(), x, y, textPaint);
-      y = y - 25.0f;
+      y = y - 35.0f;
     }
   }
 }
