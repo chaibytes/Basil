@@ -109,7 +109,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void hideUserGuidance() {
-        stopStringAnimation();
+        if (mAnimationFramework != null) {
+            stopStringAnimation();
+        }
         isAnimationBeingDisplayed = false;
     }
 
