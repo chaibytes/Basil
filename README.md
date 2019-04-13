@@ -9,4 +9,4 @@ Basil is your shopping assistant that solves this problem. Customers are already
 
 The App uses vision APIs to recognize items and display relevant curated information to help customers make an informed decision.
 
-This concept is not only for Grocery stores but can extended to any retail stores.
+This concept is not only for Grocery stores but can extended to any retail stores. It can be used to suggest innovative recepies for everyday produce, provide targeted ads, integration with customer's shopping lists. 
