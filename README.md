@@ -1,4 +1,12 @@
 # Basil
-Your personal guide during Grocery shopping
-How many times you have walked into a grocery store and found interesting seasonal fruits and veggies. They might or might not be in your grocery list. But how much to get - what to make out of it? And especially how to cut or preserve them ? Lost ?
-Well not any more. Eat healthy, create innovative recepies and most importantly learn to handle food most efficiently.
+Your In Store Shopping Assistant.
+
+Yesterday I walked into Whole Foods - there is fresh basil on sale. The deal looks good but I have never really used Basil before. I am tempted to buy it but there questions in my mind - how do I used it, how to cut it, best way to store it ?
+
+I am at crossroads but its difficult to find someone immediately to ask my questions.
+
+Basil is your shopping assistant that solves this problem. Customers are already in store and debating to purchase, with Basil they can make an informed decision quickly.
+
+The App uses vision APIs to recognize items and display relevant curated information to help customers make an informed decision.
+
+This concept is not only for Grocery stores but can extended to any retail stores. It can be used to suggest innovative recepies for everyday produce, provide targeted ads, integration with customer's shopping lists. 
