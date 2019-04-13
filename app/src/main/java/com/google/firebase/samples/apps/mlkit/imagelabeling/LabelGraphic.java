@@ -38,7 +38,7 @@ public class LabelGraphic extends Graphic {
     this.labels = labels;
     textPaint = new Paint();
     textPaint.setColor(Color.WHITE);
-    textPaint.setTextSize(35.0f);
+    textPaint.setTextSize(45.0f);
     textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
   }
 
@@ -46,12 +46,12 @@ public class LabelGraphic extends Graphic {
   public synchronized void draw(Canvas canvas) {
     //float x = overlay.getWidth() / 4.0f;
     //float y = overlay.getHeight() / 2.0f;
-    float y = 100;
+    float y = 200;
     float x = 10;
 
     for (FirebaseVisionImageLabel label : labels) {
       canvas.drawText(label.getText(), x, y, textPaint);
-      y = y - 35.0f;
+      y = y - 45.0f;
     }
   }
 }
