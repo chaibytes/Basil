@@ -5,8 +5,8 @@ Yesterday I walked into Whole Foods - there is fresh basil on sale. The deal loo
 
 I am at crossroads but its difficult to find someone immediately to ask my questions.
 
-Basil is your shopping assistant that helps solve this problem. Customers are already in store and ready to pruchase, with Basil they can make informed decision
+Basil is your shopping assistant that solves this problem. Customers are already in store and debating to purchase, with Basil they can make an informed decision quickly.
 
-The App uses vision APIs to recognize items and display relevant curated information to make an informed decision.
+The App uses vision APIs to recognize items and display relevant curated information to help customers make an informed decision.
 
-This concept is not only for Grocery stores but can extended to any retail stores that wants to increase purchases by empowering users with better knowledge.
+This concept is not only for Grocery stores but can extended to any retail stores.
