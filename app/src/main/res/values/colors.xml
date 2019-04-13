@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="camerabackground">#4D1C2833</color>
+    <color name="cameraLightBackground">#7ff8fbff</color>
 </resources>

@@ -21,6 +21,7 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/bottom_overlay"
         android:orientation="vertical"
+        android:background="@color/cameraLightBackground"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="150dp">
