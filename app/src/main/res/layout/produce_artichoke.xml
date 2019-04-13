@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/produce_artichoke"
+    android:visibility="gone"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/basil_leaf_details"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.3"
+            android:layout_height="match_parent">
+
+            <!--<ImageView-->
+                <!--android:background="@drawable/round"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp" />-->
+
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cut"
+                android:id="@+id/how_to_cut"/>
+
+            <TextView
+                android:text="CUT"
+                android:layout_marginBottom="7dp"
+                android:textSize="15sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.3"
+            android:layout_height="match_parent">
+
+            <!--<ImageView-->
+                <!--android:background="@drawable/round"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp" />-->
+
+            <ImageButton
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:background="@drawable/store"
+                android:id="@+id/how_to_store"/>
+            <TextView
+                android:text="STORE"
+                android:layout_marginBottom="7dp"
+                android:textSize="15sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.3"
+            android:layout_height="match_parent">
+
+            <!--<ImageView-->
+                <!--android:background="@drawable/round"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp" />-->
+
+            <ImageButton
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cooking"
+                android:id="@+id/how_to_cook"/>
+            <TextView
+                android:text="COOK"
+                android:layout_marginBottom="7dp"
+                android:textSize="15sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/basil_leaf_image"
+        android:layout_width="200dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:background="@drawable/artichoke" />
+
+</FrameLayout>

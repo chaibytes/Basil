@@ -8,17 +8,52 @@
     <include layout="@layout/camera_preview"/>
 
 
-    <com.example.basilandroid.OverlayImageView
-        android:id="@+id/overlay"
+    <!--<com.example.basilandroid.OverlayImageView-->
+        <!--android:id="@+id/overlay"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_overlay"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:background="@drawable/round"
+            android:id="@+id/basil_leaf_bg"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <ImageView
+            android:background="@drawable/basil_leaf"
+            android:id="@+id/basil_leaf_image"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </FrameLayout>
 
 
-    <ImageView
-        android:background="@drawable/basil_leaf"
-        android:id="@+id/basil_leaf_image"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
+
+        <TextView
+            android:layout_above="@+id/bottom_overlay"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:id="@+id/user_guidance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <include layout="@layout/produce_artichoke"/>
 
 </FrameLayout>

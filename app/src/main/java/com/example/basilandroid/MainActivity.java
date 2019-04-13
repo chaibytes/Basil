@@ -23,8 +23,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.basilandroid.animation.StringAnimationFramework;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,20 +43,44 @@ public class MainActivity extends AppCompatActivity {
     private Camera mCamera;
     private CameraPreview mPreview;
 
+    private boolean iscameraPaused;
+    private boolean isAnimationBeingDisplayed;
+
+    private StringAnimationFramework mAnimationFramework;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         openCamera();
 
-        //TODO: Show a Basil Photo animation
+        //addOverlay();
+
         displaySplashAnimation();
     }
 
     private void displaySplashAnimation() {
         // Custom animation on image
         final ImageView myView = findViewById(R.id.basil_leaf_image);
+
+        myView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideUserGuidance();
+                View produce_artichoke = findViewById(R.id.produce_artichoke);
+                produce_artichoke.setVisibility(View.VISIBLE);
+
+            }
+        });
 
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(myView, "scaleX",  0f, 1f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(myView, "scaleY",  0f, 1f);
@@ -60,32 +89,57 @@ public class MainActivity extends AppCompatActivity {
         final AnimatorSet mAnimationSet = new AnimatorSet();
 
         mAnimationSet.playTogether(scaleX, scaleY, fadeIn);
-        mAnimationSet.setDuration(4000);
+        mAnimationSet.setDuration(2000);
 
         mAnimationSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                //myView.setVisibility(View.GONE);
+                showUserGuidance();
             }
         });
         mAnimationSet.start();
     }
 
+    private void showUserGuidance() {
+        TextView view = findViewById(R.id.user_guidance_text);
+        mAnimationFramework = new StringAnimationFramework(view);
+        startStringAnimation();
+        isAnimationBeingDisplayed = true;
+    }
+
+    private void hideUserGuidance() {
+        stopStringAnimation();
+        isAnimationBeingDisplayed = false;
+    }
+
+    private void startStringAnimation() {
+        mAnimationFramework.resumeAnimators();
+    }
+
+    private void stopStringAnimation() {
+        mAnimationFramework.pauseAnimators();
+    }
+
+
     private void openCamera() {
         if (checkCameraHardware(this)) {
             requestPermissions();
             // Open camera
-            // Create an instance of Camera
-            mCamera = getCameraInstance();
-
-            // Create our Preview view and set it as the content of our activity.
-            mPreview = new CameraPreview(this, mCamera);
-            FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-            preview.addView(mPreview);
-
-            addOverlay();
+            resumeCamera();
         }
+    }
+
+    private void resumeCamera() {
+        // Create an instance of Camera
+        mCamera = getCameraInstance();
+
+        // Create our Preview view and set it as the content of our activity.
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
+
+        iscameraPaused = false;
     }
 
     private void addOverlay() {
@@ -141,4 +195,39 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (!iscameraPaused) {
+            closeCamera();
+            iscameraPaused = true;
+        }
+
+        if (mAnimationFramework != null) {
+            stopStringAnimation();
+        }
+    }
+
+    public void closeCamera() {
+        if (mCamera != null) {
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera=null;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (mCamera == null) {
+            resumeCamera();
+        }
+
+        if (mAnimationFramework != null && isAnimationBeingDisplayed) {
+            startStringAnimation();
+        }
+    }
+
 }
