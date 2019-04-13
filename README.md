@@ -1,11 +1,11 @@
 # Basil
-Your In Store Grocery Shopping Assistant.
+Your In Store Shopping Assistant.
 
-You walk into Whole Foods - there is fresh basil on sale. I have never really used Basil before and I am tempted to buy it. But the questions in my mind go through - how do i used it, how to store
+Yesterday I walked into Whole Foods - there is fresh basil on sale. The deal looks good but I have never really used Basil before. I am tempted to buy it but there questions in my mind - how do I used it, how to cut it, best way to store it ?
 
-At that point its difficult to find someone imeediately to ask questions.
+I am at crossroads but its difficult to find someone immediately to ask my questions.
 
-Basil is your grocery shopping assistant that helps solve this problem. Customers are already in store and ready to pruchase, with Basil they can make informed decision
+Basil is your shopping assistant that helps solve this problem. Customers are already in store and ready to pruchase, with Basil they can make informed decision
 
 The App uses vision APIs to recognize items and display relevant curated information to make an informed decision.
 
