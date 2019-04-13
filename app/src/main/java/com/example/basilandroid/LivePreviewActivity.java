@@ -75,6 +75,7 @@ public final class LivePreviewActivity extends AppCompatActivity
   private boolean isAnimationBeingDisplayed;
 
   private StringAnimationFramework mAnimationFramework;
+  private View mBottonOverlay;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -241,10 +242,13 @@ public final class LivePreviewActivity extends AppCompatActivity
     // Custom animation on image
     final ImageView myView = findViewById(R.id.basil_leaf_image);
 
+    mBottonOverlay = findViewById(R.id.bottom_overlay);
+
     myView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         hideUserGuidance();
+        hideOnClickButton();
         View produce_artichoke = findViewById(R.id.produce_artichoke);
         produce_artichoke.setVisibility(View.VISIBLE);
 
@@ -282,6 +286,14 @@ public final class LivePreviewActivity extends AppCompatActivity
       stopStringAnimation();
     }
     isAnimationBeingDisplayed = false;
+  }
+
+  private void hideOnClickButton() {
+      mBottonOverlay.setVisibility(View.GONE);
+  }
+
+  private void showOnClickButton() {
+      mBottonOverlay.setVisibility(View.VISIBLE);
   }
 
   private void startStringAnimation() {

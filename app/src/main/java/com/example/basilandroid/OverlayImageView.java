@@ -38,7 +38,7 @@ public class OverlayImageView extends AppCompatImageView {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(getResources().getColor(R.color.camerabackground));
+        //paint.setColor(getResources().getColor(R.color.camerabackground));
         paint.setStyle(Paint.Style.FILL);
         canvas.drawPaint(paint);
 
