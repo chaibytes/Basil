@@ -16,6 +16,7 @@ package com.google.firebase.samples.apps.mlkit.imagelabeling;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 
 import com.google.firebase.ml.vision.label.FirebaseVisionImageLabel;
 import com.google.firebase.samples.apps.mlkit.common.GraphicOverlay;
@@ -38,6 +39,7 @@ public class LabelGraphic extends Graphic {
     textPaint = new Paint();
     textPaint.setColor(Color.WHITE);
     textPaint.setTextSize(35.0f);
+    textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
   }
 
   @Override

@@ -37,7 +37,7 @@
             android:background="@color/cameraLightBackground"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="135dp">
 
             <ImageView
                 android:background="@drawable/round"

@@ -252,6 +252,8 @@ public final class LivePreviewActivity extends AppCompatActivity
         View produce_artichoke = findViewById(R.id.produce_artichoke);
         produce_artichoke.setVisibility(View.VISIBLE);
 
+        //animateBasil();
+
       }
     });
 
@@ -262,7 +264,7 @@ public final class LivePreviewActivity extends AppCompatActivity
     final AnimatorSet mAnimationSet = new AnimatorSet();
 
     mAnimationSet.playTogether(scaleX, scaleY, fadeIn);
-    mAnimationSet.setDuration(2000);
+    mAnimationSet.setDuration(1000);
 
     mAnimationSet.addListener(new AnimatorListenerAdapter() {
       @Override
@@ -273,6 +275,29 @@ public final class LivePreviewActivity extends AppCompatActivity
     });
     mAnimationSet.start();
   }
+
+  private void animateBasil() {
+      final View myView = findViewById(R.id.artichoke_image);
+
+      ObjectAnimator scaleX = ObjectAnimator.ofFloat(myView, "scaleX",  0f, 1f);
+      ObjectAnimator scaleY = ObjectAnimator.ofFloat(myView, "scaleY",  0f, 1f);
+      ObjectAnimator fadeIn = ObjectAnimator.ofFloat(myView, "alpha", 0f, 1f);
+
+      final AnimatorSet mAnimationSet = new AnimatorSet();
+
+      mAnimationSet.playTogether(scaleX, scaleY, fadeIn);
+      mAnimationSet.setDuration(2000);
+
+      mAnimationSet.addListener(new AnimatorListenerAdapter() {
+          @Override
+          public void onAnimationEnd(Animator animation) {
+              super.onAnimationEnd(animation);
+              myView.setVisibility(View.VISIBLE);
+          }
+      });
+      mAnimationSet.start();
+  }
+
 
   private void showUserGuidance() {
     TextView view = findViewById(R.id.user_guidance_text);
